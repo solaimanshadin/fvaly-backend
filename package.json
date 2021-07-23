@@ -1,0 +1,39 @@
+{
+  "name": "fvaly",
+  "version": "1.0.0",
+  "description": "Multi vendor e-commerce",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/solaimanshadin/fvaly-backend.git"
+  },
+  "keywords": [],
+  "author": "Solaiman Shadin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/solaimanshadin/fvaly-backend.git"
+  },
+  "homepage": "https://github.com/solaimanshadin/fvaly-backend.git#readme",
+  "dependencies": {
+    "accesscontrol": "^2.2.1",
+    "bcrypt": "^5.0.1",
+    "cloudinary": "^1.26.2",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.26.0",
+    "mongoose": "^5.9.15",
+    "mongoose-beautiful-unique-validation": "^7.1.1",
+    "multer": "^1.4.2",
+    "nodemon": "^2.0.12",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.1.0"
+  }
+}

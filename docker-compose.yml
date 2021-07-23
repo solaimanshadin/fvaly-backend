@@ -1,0 +1,48 @@
+version: "3.1"
+# Intended for Development ONLY
+services:
+  backend-nodejs-app: # Main App
+    build: .
+    env_file:
+      - ./.env
+    volumes:
+      - ./src:/opt/app/src
+    ports:
+      - ${PORT}:${PORT}
+      - ${DEBUGGER_PORT}:${DEBUGGER_PORT} # Debugger Port
+    restart: unless-stopped
+    depends_on:
+      - backend-redis
+      - backend-mongo
+    healthcheck:
+      test: ["CMD","nc","-z","localhost","3000"]
+      interval: 20s
+      timeout: 5s
+      retries: 3
+    command: nodemon src/index.js
+  backend-redis: # Redis
+    image: redis:5-alpine
+    restart: unless-stopped
+    logging:
+      driver: none
+    healthcheck:
+      test: ["CMD","nc","-z","localhost","6379"]
+      interval: 20s
+      timeout: 5s
+      retries: 3
+  backend-mongo: # Mongo
+    image: mongo:4-bionic
+    restart: unless-stopped
+    logging:
+      driver: none
+    volumes:
+      - database_vol:/data/db
+    ports:
+      - "27017:27017"
+    healthcheck:
+      test: ["CMD","nc","-z","localhost","27017"]
+      interval: 20s
+      timeout: 5s
+      retries: 3
+volumes:
+  database_vol:
