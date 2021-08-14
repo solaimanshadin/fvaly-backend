@@ -20,12 +20,12 @@ const ProductSchema    =   new Schema ({
 		type: String,
 		required: true
 	},
-	catId: {
+	category: {
 		type: Schema.Types.ObjectId,
 		ref: 'Category',
 		required: true,
 	},
-	storeId: {
+	store: {
 		type: Schema.Types.ObjectId,
 		ref: 'Store',
 		required: true,

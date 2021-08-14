@@ -7,6 +7,7 @@ const passport = require('passport');
 
 require('dotenv').config({path: `${__dirname}/../.env`});
 // Pass the global passport object into the configuration function
+
 require('./lib/passport')(passport);
 app.use(passport.initialize());
 app.use(express.json());

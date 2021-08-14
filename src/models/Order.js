@@ -4,14 +4,15 @@ mongoose.Promise    =   global.Promise;
 
 const OrderSchema    =   new Schema ({
 	userId: {
-		type: String,
+		type: Schema.Types.ObjectId,
 		required: true,
-		trim: true,
+		ref: 'User',
 	},
-	products: {
-		type: Number,
+	products: [{
+		type: Schema.Types.ObjectId,
+		ref: 'Product',
 		required: true
-	},
+	}],
 	status: {
 		type: String,
 		default: 'pending',

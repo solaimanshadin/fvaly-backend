@@ -18,6 +18,11 @@ const UserSchema = new Schema(
 			trim: true,
 			lowercase: true,
 		},
+		phone: {
+			type: String,
+			required: [true, 'Phone number is required!'],
+			trim: true,
+		},
 		role: {
 			type: String,
 			default: 'user',
@@ -54,4 +59,4 @@ UserSchema.methods.isValidPassword = async function(password) {
 UserSchema.plugin(require('mongoose-beautiful-unique-validation'));
 
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports =  mongoose.model('User', UserSchema);

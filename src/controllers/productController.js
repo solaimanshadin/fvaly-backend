@@ -7,13 +7,12 @@ module.exports.createProduct = async (req, res, next) => {
 	try{
 		const body = req.body;
 		const upload = await cloudinary.uploader.upload(req.file.path);
-		
+
 		body.image = upload.public_id;
-		const user = new Product(body);
-		await user.save();
-		return res.status(201).json(createResponse(user, 'Product Added successfully!', false));
+		const product = new Product(body);
+		await product.save();
+		return res.status(201).json(createResponse(product, 'Product Added successfully!', false));
 	} catch(err) {
-		console.log('err', err);
 		next(err);
 	}
 };
@@ -21,8 +20,11 @@ module.exports.createProduct = async (req, res, next) => {
 module.exports.deleteProduct = async (req, res, next) => {
 	try{
 		const { id } = req.params;
-		const user =  Product.deleteOne({_id: id});
-		return res.status(200).json(createResponse(user, 'Product Deleted successfully!', false));
+		const product = await Product.deleteOne({_id: id});
+		if(product.deletedCount) {
+			return res.status(200).json(createResponse(null, 'Product Deleted successfully!', false));
+		}
+		return res.status(404).json(createResponse(null, 'No Product found with this Id!', true));
 	} catch(err) {
 		next(err);
 	}

@@ -1,29 +1,29 @@
 const router    =   require('express').Router();
-const productController    =   require('../controllers/productController');
+const storeController    =   require('../controllers/storeController');
 const accessControl = require('../accessControl');
 const passport = require('passport');
 const uploader = require('../lib/multer');
 
 router.post('/', 
 	passport.authenticate('jwt', { session: false }),
-	accessControl.grantAccess('createOwn', 'product'),
+	accessControl.grantAccess('createOwn', 'store'),
 	uploader.single('image'),
-	productController.createProduct
+	storeController.createStore
 );
 
 router.delete('/:id',
 	passport.authenticate('jwt', { session: false }),
-	accessControl.grantAccess('deleteOwn', 'product'), productController.deleteProduct
+	accessControl.grantAccess('deleteOwn', 'store'), storeController.deleteStore
 );
 
 router.get(
 	'/:id',
-	productController.getProductById
+	storeController.getStoreById
 );
 
 router.get(
 	'/',
-	productController.getProducts
+	storeController.getStores
 );
 
 module.exports = router;

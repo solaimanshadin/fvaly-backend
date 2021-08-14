@@ -18,9 +18,9 @@ const StoreSchema = new Schema(
 			type: String,
 			required: true,
 		},
-		ownerId: {
+		owner: {
 			type: Schema.Types.ObjectId,
-			ref: 'Owner',
+			ref: 'User',
 			required: true,
 		},
 		status: {
