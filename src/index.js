@@ -4,7 +4,7 @@ const routes    =   require('./routes/index');
 const db        =   require('./db/db');
 const errorHandler  =   require('./middlewares/errors');
 const passport = require('passport');
-const cors     = require(cors);
+const cors     = require("cors");
 
 require('dotenv').config({path: `${__dirname}/../.env`});
 // Pass the global passport object into the configuration function
