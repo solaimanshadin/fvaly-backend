@@ -33,7 +33,7 @@ module.exports.deleteStore = async (req, res, next) => {
 
 module.exports.getStoreById = async (req, res, next) => {
 	try{
-		const { id } = req.params.id;
+		const { id } = req.params;
 		const store = await Store.findOne({_id: id});
 		if(!store) throw new Error('No store found with this id!');
 		return res.json(createResponse(store));

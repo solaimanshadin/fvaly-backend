@@ -29,7 +29,7 @@ module.exports.deleteCategory = async (req, res, next) => {
 
 module.exports.getCategoryById = async (req, res, next) => {
 	try{
-		const { id } = req.params.id;
+		const { id } = req.params;
 		const category = await Category.findOne({_id: id});
 		if(!category) throw new Error('No category found with this id!');
 		return res.json(createResponse(category));

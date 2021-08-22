@@ -30,7 +30,7 @@ module.exports.deleteOrder = async (req, res, next) => {
 
 module.exports.getOrderById = async (req, res, next) => {
 	try{
-		const { id } = req.params.id;
+		const { id } = req.params;
 		const order = await Order.findOne({_id: id});
 		if(!order) throw new Error('No order found with this id!');
 		return res.json(createResponse(order));

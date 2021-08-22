@@ -29,10 +29,14 @@ module.exports.deleteProduct = async (req, res, next) => {
 		next(err);
 	}
 };
-
+/**
+ * Get Product By Id
+ * @function
+ * @param {req}
+ */ 
 module.exports.getProductById = async (req, res, next) => {
 	try{
-		const { id } = req.params.id;
+		const { id } = req.params;
 		const product = await Product.findOne({_id: id});
 		if(!product) throw new Error('No product found with this id!');
 		return res.json(createResponse(product));
