@@ -34,8 +34,9 @@ module.exports.login = async (req, res, next) => {
 			profileImage: user.profileImage,
 			phone: user.profileImage,
 			role: user.role,
-			status: user.status
-		}, 'Login successful!', false, token));
+			status: user.status,
+			token
+		}, 'Login successful!', false));
 
 	} catch(err) {
 		next(err);
