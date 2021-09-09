@@ -26,4 +26,6 @@ router.get(
 	storeController.getStores
 );
 
+
+
 module.exports = router;

@@ -51,3 +51,4 @@ module.exports.getStores = async (req, res, next) => {
 		next(err);
 	}
 };
+
